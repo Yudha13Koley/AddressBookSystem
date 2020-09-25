@@ -23,9 +23,7 @@ public class AddressBookDirectory {
 		dir.createAddressBook(sc);
 		dir.addContactInAbook(sc);
 		dir.addContactInAbook(sc);
-		System.out.println(dir.Abook[0]);
-		dir.createAddressBook(sc);
-		dir.addContactInAbook(sc);
+		
 	}
 
 }
