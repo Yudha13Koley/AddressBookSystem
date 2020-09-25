@@ -6,13 +6,13 @@ public class ContactPerson {
 	private String address;
 	private String city;
 	private String state;
-	private int zip;
+	private String zip;
 	private String phoneNumber;
 	private String email;
 	public ContactPerson() {
 		// TODO Auto-generated constructor stub
 	}
-	public ContactPerson(String firstName, String lastName, String address, String city, String state, int zip,
+	public ContactPerson(String firstName, String lastName, String address, String city, String state, String zip,
 			String phoneNumber, String email) {
 		super();
 		this.firstName = firstName;
@@ -74,12 +74,12 @@ public class ContactPerson {
 	}
 
 
-	public int getZip() {
+	public String getZip() {
 		return zip;
 	}
 
 
-	public void setZip(int zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 
@@ -106,7 +106,7 @@ public class ContactPerson {
 	public String toString() {
 		return "firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
 				+ city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email
-				+ "]";
+				;
 	}
 
 		

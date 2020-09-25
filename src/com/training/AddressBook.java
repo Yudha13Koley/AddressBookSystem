@@ -3,36 +3,106 @@ package com.training;
 import java.util.Scanner;
 
 public class AddressBook {
-	public ContactPerson contactPerson;
+	public int noOfContacts;
+	private ContactPerson[] contactArray;
+	public AddressBook()  {
+		contactArray=new ContactPerson[5];
+	}
 	public void addContact(ContactPerson contactPerson) {
-		Scanner sc=new Scanner(System.in);
+		contactArray[noOfContacts]=contactPerson;
+		noOfContacts++;
+	}
+		
+	public void addContact(Scanner sc) {
+		contactArray[noOfContacts]=new ContactPerson();
 		System.out.println("Enter the Details to Add Contact :");
 		System.out.println("Enter First Name :");
-		contactPerson.setFirstName(sc.nextLine());
+		contactArray[noOfContacts].setFirstName(sc.next());
 		System.out.println("Enter Last Name :");
-		contactPerson.setLastName(sc.nextLine());
+		contactArray[noOfContacts].setLastName(sc.next());
 		System.out.println("Enter Address :");
-		contactPerson.setAddress(sc.nextLine());
+		contactArray[noOfContacts].setAddress(sc.next());
 		System.out.println("Enter City :");
-		contactPerson.setCity(sc.nextLine());
+		contactArray[noOfContacts].setCity(sc.next());
 		System.out.println("Enter State :");
-		contactPerson.setState(sc.nextLine());
+		contactArray[noOfContacts].setState(sc.next());
 		System.out.println("Enter Zip :");
-		Scanner sc2=new Scanner(System.in);
-		contactPerson.setZip(sc2.nextInt());
+		contactArray[noOfContacts].setZip(sc.next());
 		System.out.println("Enter Phone No :");
-		contactPerson.setPhoneNumber(sc.nextLine());
+		contactArray[noOfContacts].setPhoneNumber(sc.next());
 		System.out.println("Enter Email ID :");
-		contactPerson.setEmail(sc.nextLine());
+		contactArray[noOfContacts].setEmail(sc.next());
 		System.out.println("Contact Saved Successfully !");
-		sc.close();
-		sc2.close();
+		System.out.println(contactArray[noOfContacts]);
+		noOfContacts++;
 	}
-public static void main(String[] args) {
-	ContactPerson p1=new ContactPerson();
-	AddressBook A1=new AddressBook();
-	A1.addContact(p1);
-System.out.println(p1);
+	public int searchByName(Scanner sc) {
+		int i=0;
+		System.out.println("Enter the First Name You Want to Search !");
+		String name=sc.next();
+		for(i=0;i<noOfContacts;i++)
+		{
+			if(contactArray[i].getFirstName().equalsIgnoreCase(name))
+				break;
+		}
+		System.out.println(contactArray[i]);
+		return i;
+		}
+	public void editContact(Scanner sc) {
+		int i=this.searchByName(sc);
+		for(;;) {
+		System.out.println("To Edit this Contact : ");
+		System.out.println("Press 1 to Edit First Name :");
+		System.out.println("Press 2 to Edit Last Name :");
+		System.out.println("Press 3 to Edit Address :");
+		System.out.println("Press 4 to Edit City :");
+		System.out.println("Press 5 to Edit State :");
+		System.out.println("Press 6 to Edit Zip :");
+		System.out.println("Press 7 to Edit Phone No:");
+		System.out.println("Press 8 to Edit Email :");
+		System.out.println("Press 9 to Exit :");
+	    String choice=sc.next();
+		switch(Integer.parseInt(choice))
+		{
+		case 1 :System.out.println("Enter First Name :");
+		contactArray[i].setFirstName(sc.next());
+		break;
+		case 2:System.out.println("Enter Last Name :");
+		contactArray[i].setLastName(sc.next());
+		break;
+		case 3:System.out.println("Enter Address :");
+		contactArray[i].setAddress(sc.next());
+		break;
+		case 4:System.out.println("Enter City :");
+		contactArray[i].setCity(sc.next());
+		break;
+		case 5:System.out.println("Enter State :");
+		contactArray[i].setState(sc.next());
+		break;
+		case 6:System.out.println("Enter Zip :");
+		
+		contactArray[i].setZip(sc.next());
+
+		break;
+		case 7:System.out.println("Enter Phone No :");
+		contactArray[i].setPhoneNumber(sc.next());
+		break;
+		case 8:System.out.println("Enter Email ID :");
+		contactArray[i].setEmail(sc.next());
+		break;
+		case 9:System.out.println("Edited Contact :");
+			System.out.println(contactArray[i]);
+			System.exit(0);
+		break;
+			default:System.out.println("Select From Menu !");
+		}
+		}
+	}
 	
+public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	AddressBook A1=new AddressBook();	
+	A1.addContact(sc);
+	A1.editContact(sc);
 }
 }
