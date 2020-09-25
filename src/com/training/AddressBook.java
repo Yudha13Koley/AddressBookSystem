@@ -3,49 +3,48 @@ package com.training;
 import java.util.Scanner;
 
 public class AddressBook {
-	public int noOfContacts;
-	private ContactPerson[] contactArray;
+	private Contacts contact=new Contacts();
+	
 	public AddressBook()  {
-		contactArray=new ContactPerson[5];
 	}
 	public void addContact(ContactPerson contactPerson) {
-		contactArray[noOfContacts]=contactPerson;
-		noOfContacts++;
+		contact.contactArray[contact.noOfContacts]=contactPerson;
+		contact.noOfContacts++;
 	}
 		
 	public void addContact(Scanner sc) {
-		contactArray[noOfContacts]=new ContactPerson();
+		contact.contactArray[contact.noOfContacts]=new ContactPerson();
 		System.out.println("Enter the Details to Add Contact :");
 		System.out.println("Enter First Name :");
-		contactArray[noOfContacts].setFirstName(sc.next());
+		contact.contactArray[contact.noOfContacts].setFirstName(sc.next());
 		System.out.println("Enter Last Name :");
-		contactArray[noOfContacts].setLastName(sc.next());
+		contact.contactArray[contact.noOfContacts].setLastName(sc.next());
 		System.out.println("Enter Address :");
-		contactArray[noOfContacts].setAddress(sc.next());
+		contact.contactArray[contact.noOfContacts].setAddress(sc.next());
 		System.out.println("Enter City :");
-		contactArray[noOfContacts].setCity(sc.next());
+		contact.contactArray[contact.noOfContacts].setCity(sc.next());
 		System.out.println("Enter State :");
-		contactArray[noOfContacts].setState(sc.next());
+		contact.contactArray[contact.noOfContacts].setState(sc.next());
 		System.out.println("Enter Zip :");
-		contactArray[noOfContacts].setZip(sc.next());
+		contact.contactArray[contact.noOfContacts].setZip(sc.next());
 		System.out.println("Enter Phone No :");
-		contactArray[noOfContacts].setPhoneNumber(sc.next());
+		contact.contactArray[contact.noOfContacts].setPhoneNumber(sc.next());
 		System.out.println("Enter Email ID :");
-		contactArray[noOfContacts].setEmail(sc.next());
+		contact.contactArray[contact.noOfContacts].setEmail(sc.next());
 		System.out.println("Contact Saved Successfully !");
-		System.out.println(contactArray[noOfContacts]);
-		noOfContacts++;
+		System.out.println(contact.contactArray[contact.noOfContacts]);
+		contact.noOfContacts++;
 	}
 	public int searchByName(Scanner sc) {
 		int i=0;
 		System.out.println("Enter the First Name You Want to Search !");
 		String name=sc.next();
-		for(i=0;i<noOfContacts;i++)
+		for(i=0;i<contact.noOfContacts;i++)
 		{
-			if(contactArray[i].getFirstName().equalsIgnoreCase(name))
+			if(contact.contactArray[i].getFirstName().equalsIgnoreCase(name))
 				break;
 		}
-		System.out.println(contactArray[i]);
+		System.out.println(contact.contactArray[i]);
 		return i;
 		}
 	public void editContact(Scanner sc) {
@@ -65,33 +64,31 @@ public class AddressBook {
 		switch(Integer.parseInt(choice))
 		{
 		case 1 :System.out.println("Enter First Name :");
-		contactArray[i].setFirstName(sc.next());
+		contact.contactArray[i].setFirstName(sc.next());
 		break;
 		case 2:System.out.println("Enter Last Name :");
-		contactArray[i].setLastName(sc.next());
+		contact.contactArray[i].setLastName(sc.next());
 		break;
 		case 3:System.out.println("Enter Address :");
-		contactArray[i].setAddress(sc.next());
+		contact.contactArray[i].setAddress(sc.next());
 		break;
 		case 4:System.out.println("Enter City :");
-		contactArray[i].setCity(sc.next());
+		contact.contactArray[i].setCity(sc.next());
 		break;
 		case 5:System.out.println("Enter State :");
-		contactArray[i].setState(sc.next());
+		contact.contactArray[i].setState(sc.next());
 		break;
 		case 6:System.out.println("Enter Zip :");
-		
-		contactArray[i].setZip(sc.next());
-
+		contact.contactArray[i].setZip(sc.next());
 		break;
 		case 7:System.out.println("Enter Phone No :");
-		contactArray[i].setPhoneNumber(sc.next());
+		contact.contactArray[i].setPhoneNumber(sc.next());
 		break;
 		case 8:System.out.println("Enter Email ID :");
-		contactArray[i].setEmail(sc.next());
+		contact.contactArray[i].setEmail(sc.next());
 		break;
 		case 9:System.out.println("Edited Contact :");
-			System.out.println(contactArray[i]);
+			System.out.println(contact.contactArray[i]);
 			System.exit(0);
 		break;
 			default:System.out.println("Select From Menu !");
@@ -101,25 +98,25 @@ public class AddressBook {
 	public void deleteContact(Scanner sc) {
 		System.out.println("Search the Name of Contact You Want to Delete : ");
 		int i=this.searchByName(sc);
-		while(i<noOfContacts)
-		{if(i+1==noOfContacts)
-			contactArray[i]=null;
+		while(i<contact.noOfContacts)
+		{if(i+1==contact.noOfContacts)
+			contact.contactArray[i]=null;
 		else
-			contactArray[i]=contactArray[i+1];
+			contact.contactArray[i]=contact.contactArray[i+1];
 		i++;
 		}
 		System.out.println("Contact Deleted Succesfully !");
-		noOfContacts--;
+		contact.noOfContacts--;
 	}
 	public void printContact() {
-		if (noOfContacts==0)
+		if (contact.noOfContacts==0)
 		{
 			System.out.println("Address Book is Empty !");
 		}
 		else {
-			for(int i=0;i<noOfContacts;i++)
+			for(int i=0;i<contact.noOfContacts;i++)
 			{
-				System.out.println(contactArray[i]);
+				System.out.println(contact.contactArray[i]);
 			}
 		}
 	}
