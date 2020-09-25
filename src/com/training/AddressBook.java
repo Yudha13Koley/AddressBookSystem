@@ -98,11 +98,37 @@ public class AddressBook {
 		}
 		}
 	}
+	public void deleteContact(Scanner sc) {
+		System.out.println("Search the Name of Contact You Want to Delete : ");
+		int i=this.searchByName(sc);
+		while(i<noOfContacts)
+		{if(i+1==noOfContacts)
+			contactArray[i]=null;
+		else
+			contactArray[i]=contactArray[i+1];
+		i++;
+		}
+		System.out.println("Contact Deleted Succesfully !");
+		noOfContacts--;
+	}
+	public void printContact() {
+		if (noOfContacts==0)
+		{
+			System.out.println("Address Book is Empty !");
+		}
+		else {
+			for(int i=0;i<noOfContacts;i++)
+			{
+				System.out.println(contactArray[i]);
+			}
+		}
+	}
 	
 public static void main(String[] args) {
 	Scanner sc=new Scanner(System.in);
 	AddressBook A1=new AddressBook();	
 	A1.addContact(sc);
-	A1.editContact(sc);
+	A1.deleteContact(sc);
+	A1.printContact();
 }
 }
