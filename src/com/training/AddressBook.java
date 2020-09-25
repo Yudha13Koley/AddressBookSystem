@@ -4,8 +4,15 @@ import java.util.Scanner;
 
 public class AddressBook {
 	private Contacts contact=new Contacts();
-	
+	private String AddressBookName;
 	public AddressBook()  {
+	}
+	
+	public String getAddressBookName() {
+		return AddressBookName;
+	}
+	public void setAddressBookName(String addressBookName) {
+		AddressBookName = addressBookName;
 	}
 	public void addContact(ContactPerson contactPerson) {
 		contact.contactArray[contact.noOfContacts]=contactPerson;
@@ -120,14 +127,5 @@ public class AddressBook {
 			}
 		}
 	}
-	
-public static void main(String[] args) {
-	Scanner sc=new Scanner(System.in);
-	AddressBook A1=new AddressBook();	
-	A1.addContact(sc);
-	A1.addContact(sc);
-	A1.addContact(sc);
-	A1.addContact(sc);
-	A1.printContact();
-}
+
 }
