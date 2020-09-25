@@ -128,7 +128,9 @@ public static void main(String[] args) {
 	Scanner sc=new Scanner(System.in);
 	AddressBook A1=new AddressBook();	
 	A1.addContact(sc);
-	A1.deleteContact(sc);
+	A1.addContact(sc);
+	A1.addContact(sc);
+	A1.addContact(sc);
 	A1.printContact();
 }
 }
